@@ -33,10 +33,11 @@ export class ProductListComponent implements OnInit {
         case 'name':
           if (filter.detail !== '') return value.Name.toLowerCase().indexOf(filter.detail.toLowerCase()) > -1;
           else return true;
-          break;
         case 'breed':
           if (filter.detail !== '') return value.Breed.toLowerCase().indexOf(filter.detail.toLowerCase()) > -1;
           else return true;
+        default:
+          return true;
       }
     });
   }
