@@ -1,0 +1,12 @@
+<app-search-bar (onFilterChange)="onFilterChange($event)"></app-search-bar>
+
+<div class="list-group">
+    <a href="#" class="list-group-item list-group-item-action" *ngFor="let item of listFilteredProduct">
+        <div class="d-flex w-100 justify-content-between">
+            <h5 class="mb-1">{{item.Name}}</h5>
+            <small class="text-muted">{{item.Birth}}</small>
+        </div>
+        <p class="mb-1"> {{ item.Breed }} </p>
+        <small class="text-muted">{{ item.Gender | getGender }}</small>
+    </a>
+</div>
