@@ -1,9 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { Product } from 'src/app/interfaces/product';
-import { SelectedFilter } from 'src/app/interfaces/selected-filter';
-import { DataService } from 'src/app/services/data-service/data.service';
+import { Product } from '../../../shared/models/product';
+import { SelectedFilter } from './../../interfaces/selected-filter';
+import { DataService } from './../../services/data-service/data.service';
+
+import { Store } from '@ngxs/store';
+import { AddProduct } from 'src/shared/actions/product.action';
 
 @Component({
   selector: 'app-product-list',
@@ -11,18 +14,20 @@ import { DataService } from 'src/app/services/data-service/data.service';
   styleUrls: ['./product-list.component.scss'],
 })
 export class ProductListComponent implements OnInit {
-  public listProductObs: Observable<Product[]>;
-  public listFilteredProductObs: Observable<Product[]>;
+  @Input()
+  listProduct: Observable<Product[]>;
+  listFilteredProductObs: Observable<Product[]>;
 
-  constructor(private dataService: DataService) {}
+  constructor(private dataService: DataService,
+              private store: Store) {}
 
   ngOnInit(): void {
-    this.listProductObs = this.dataService.GetList();
-    this.listFilteredProductObs = this.listProductObs;
+    this.listProduct = this.dataService.GetList();
+    this.listFilteredProductObs = this.listProduct;
   }
 
   onFilterChange(filter: SelectedFilter): void {
-    this.listFilteredProductObs = this.listProductObs.pipe(
+    this.listFilteredProductObs = this.listProduct.pipe(
       map(data => {
         return data.filter((value: Product) => {
           switch (filter.global) {
@@ -40,5 +45,9 @@ export class ProductListComponent implements OnInit {
           }
         });
       }));
+  }
+
+  addProductToBasket(product: Product){
+    this.store.dispatch(new AddProduct(product));
   }
 }

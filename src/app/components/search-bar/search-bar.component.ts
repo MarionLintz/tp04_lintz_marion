@@ -1,5 +1,5 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { SelectedFilter } from 'src/app/interfaces/selected-filter';
+import { SelectedFilter } from './../../interfaces/selected-filter';
 
 @Component({
   selector: 'app-search-bar',

@@ -5,3 +5,7 @@ export interface Product{
     Breed: string,
     Birth: string
 }
+
+export class BasketStateModel{
+    products: Product[];
+}

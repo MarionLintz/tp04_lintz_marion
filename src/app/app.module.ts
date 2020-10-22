@@ -10,21 +10,33 @@ import { GetGenderPipe } from './pipes/get-gender/get-gender.pipe';
 import { SearchBarComponent } from './components/search-bar/search-bar.component';
 import { FormsModule } from '@angular/forms';
 
+import { NgxsModule } from '@ngxs/store';
+import { BasketState } from '../shared/states/basket.state';
+import { HeaderComponent } from './components/header/header.component';
+import { BasketComponent } from './components/basket/basket.component';
+import { ClientAccountComponent } from './components/client-account/client-account.component';
+import { HomeComponent } from './components/home/home.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ProductListComponent,
     GetGenderPipe,
-    SearchBarComponent
+    SearchBarComponent,
+    HeaderComponent,
+    BasketComponent,
+    ClientAccountComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    NgxsModule.forRoot([BasketState])
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
+
 export class AppModule { }
