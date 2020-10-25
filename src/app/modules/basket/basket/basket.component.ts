@@ -24,8 +24,10 @@ export class BasketComponent implements OnInit {
           let mapList: Map<Product, number> = new Map<Product, number>();
 
           list.forEach((value) => {
-            if(mapList.has(value))
-              mapList.set(value, mapList.get(value)+1);
+            let a = Array.from(mapList.keys()).filter(e => e.Id == value.Id);
+            if(a.length > 0){
+              mapList.set(a[0], mapList.get(a[0])+1);
+            }
             else
               mapList.set(value, 1);
           });

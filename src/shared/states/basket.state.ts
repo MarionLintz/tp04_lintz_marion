@@ -1,7 +1,7 @@
-import { BasketStateModel } from "../models/product";
 
 import { AddProduct, RemoveProduct } from '../actions/product.action';
 import { Action, Selector, State, StateContext } from '@ngxs/store';
+import { BasketStateModel } from '../models/basket-state-model';
 
 @State<BasketStateModel>({
     name: 'basket',

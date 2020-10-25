@@ -1,12 +1,12 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { Product } from '../../../shared/models/product';
-import { SelectedFilter } from './../../interfaces/selected-filter';
-import { DataService } from './../../services/data-service/data.service';
 
 import { Store } from '@ngxs/store';
 import { AddProduct } from 'src/shared/actions/product.action';
+import { Product } from 'src/shared/models/product';
+import { DataService } from 'src/app/services/data-service/data.service';
+import { SelectedFilter } from 'src/shared/models/selected-filter';
 
 @Component({
   selector: 'app-product-list',
@@ -14,7 +14,6 @@ import { AddProduct } from 'src/shared/actions/product.action';
   styleUrls: ['./product-list.component.scss'],
 })
 export class ProductListComponent implements OnInit {
-  @Input()
   listProduct: Observable<Product[]>;
   listFilteredProductObs: Observable<Product[]>;
 

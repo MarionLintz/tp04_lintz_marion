@@ -9,12 +9,10 @@ import { Product } from 'src/shared/models/product';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-  listProduct: Observable<Product[]>;
 
-  constructor(private dataService: DataService) { }
+  constructor() { }
 
   ngOnInit(): void {
-    this.listProduct = this.dataService.GetList();
   }
 
 }

@@ -3,7 +3,9 @@
 <div class="list-group">
     <div class="list-group-item list-group-item-action" *ngFor="let item of listFilteredProductObs | async">
         <div class="d-flex w-100 justify-content-between">
-            <h5 class="mb-1">{{item.Name}}</h5>
+            <h5 class="mb-1">
+                {{item.Name}}
+            </h5>
             <small class="text-muted">{{item.Birth}}</small>
         </div>
         
@@ -12,7 +14,10 @@
             <button type="button" class="btn btn-dark" (click)="addProductToBasket(item)">Ajouter au panier</button>
         </div>
 
-        <small class="text-muted">{{ item.Gender | getGender }}</small>
+        <div class="d-flex w-100 justify-content-between mt-3">
+            <small class="text-muted">{{ item.Gender | getGender }}</small>
+            <button type="button" class="btn btn-info" [routerLink]="['./detail', item.Id]" >Plus d'information</button>
+        </div>
 
     </div>
 </div>

@@ -3,9 +3,5 @@ export interface Product{
     Name: string,
     Gender: string,
     Breed: string,
-    Birth: string
-}
-
-export class BasketStateModel{
-    products: Product[];
+    Birth: string,
 }
